@@ -10,6 +10,9 @@ dotenv.config();
 // Initialize PostgreSQL client
 const client = new Client({
   connectionString: process.env.DATABASE_URL, // Add your PostgreSQL connection URL here
+  ssl: {
+    rejectUnauthorized: false  // Optional: allows self-signed certificates
+  }
 });
 client.connect()
   .then(() => console.log('Database connected successfully'))
